@@ -4,13 +4,19 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
 
     Button btnActTwo;
     final String TAG = "States";
+    EditText ED;
+    String st;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +25,38 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         btnActTwo = (Button) findViewById(R.id.btnActTwo);
         btnActTwo.setOnClickListener(this);
+        ED = (EditText) findViewById(R.id.ED);
 
         Log.d(TAG, "MainActivity: onCreate()");
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mymenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_second) {
+            Intent intent = new Intent(this, ActivityTwo.class);
+            startActivity(intent);
+        }
+        if (item.getItemId() == R.id.menu_third) {
+            Intent intent = new Intent(this, ActivityThree.class);
+            startActivity(intent);
+        }
+        if (item.getItemId() == R.id.menu_fourth) {
+            Intent intent = new Intent(this, ActivityFour.class);
+            startActivity(intent);
+        }
+        return false;
+    }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnActTwo:
-                Intent intent = new Intent(this, ActivityTwo.class);
+                st = ED.getText().toString();
+                Intent intent = new Intent(MainActivity.this, ActivityTwo.class);
+                intent.putExtra("Name", st);
                 startActivity(intent);
-                break;
-            default:
-                break;
-        }
     }
 
     @Override

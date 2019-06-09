@@ -5,10 +5,22 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:text="Я первая активити"/>
+
+    <EditText
+        android:id="@+id/ED"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите имя"/>
+
     <Button
         android:id="@+id/btnActTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="Go to Activity Two"></Button>
+        android:text="Лицезреть имя на другой активити"></Button>
 </LinearLayout>
